@@ -24,7 +24,7 @@ bash <(curl -fsSL git.io/local.sh)
 ---
 - 短链接命令，有时候会抽风的，用不了，如果用不了就用此命令
 ```sh
-bash <(curl -fsSL https://github.com/281677160/bendi/raw/main/local.sh)
+bash <(curl -fsSL https://github.com/ku891/bendi/raw/main/local.sh)
 ```
 #
 ---
