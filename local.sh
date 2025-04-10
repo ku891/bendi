@@ -437,7 +437,8 @@ function Bendi_UpdateSource() {
 ECHOGG "更新插件源,请耐心等候..."
 cd ${HOME_PATH} && source ${GITHUB_ENV}
 if [[ "${REPEAT_EDLY}" == "1" ]]; then
-  source ${BUILD_PATH}/common.sh && Diy_Wenjian
+  # source ${BUILD_PATH}/common.sh && Diy_Wenjian
+  source ${BUILD_PATH}/common.sh && Diy_menu2
 else
   source ${BUILD_PATH}/common.sh && Diy_menu3
 fi
