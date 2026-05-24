@@ -3,7 +3,7 @@
 
 - ### 说明：
 
-- 此本地Ubuntu一键编译脚本完全同步我的《[云编译脚本](https://github.com/281677160/build-actions)》所有扩展，包含常用插件
+- 此本地Ubuntu一键编译脚本完全同步我的《[云编译脚本](https://github.com/ku891/build-actions)》所有扩展，包含常用插件
 - github已筑墙,所以国内用户编译全程都需要梯子,请准备好梯子,使用大陆白名单或全局模式
 - 《[mobaxterm<SSH工具下载>](https://mobaxterm.mobatek.net/)》  《[FinalShell<SSH工具下载>](http://www.hostbuf.com/)》  《[winscp<文件管理下载>](https://winscp.net/eng/download.php)》
 - 请使用 Ubuntu 22.04 LTS（支持windons子系统Ubuntu、服务器版Ubuntu、桌面版Ubuntu）
@@ -17,24 +17,24 @@ sudo apt-get update && sudo apt-get install -y curl wget
 ---
 - WSL Ubuntu、服务器版Ubuntu、桌面版Ubuntu 通用一键编译openwrt命令（短链接命令）
 ```sh
-bash <(curl -fsSL git.io/local.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ku891/bendi/main/local.sh)
 ```
 
 ---
 - 短链接命令，有时候会抽风的，用不了，如果用不了就用此命令
 ```sh
-bash <(curl -fsSL https://github.com/281677160/bendi/raw/main/local.sh)
+bash <(curl -fsSL https://github.com/ku891/bendi/raw/main/local.sh)
 ```
 #
 ---
 ---
-# <img src="https://github.com/281677160/bendi/blob/main/doc/1.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/02.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/2.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/3.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/4.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/5.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/6.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/7.png" /> <br>
-# <img src="https://github.com/281677160/bendi/blob/main/doc/8.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/1.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/02.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/2.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/3.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/4.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/5.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/6.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/7.png" /> <br>
+# <img src="https://github.com/ku891/bendi/blob/main/doc/8.png" /> <br>
 
