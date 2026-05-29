@@ -1,50 +1,30 @@
-# 云编译配置参考
+# 云编译配置参考（Cudy TR3000 256MB）
 
-本目录镜像 [ku891/build-actions](https://github.com/ku891/build-actions) 的 ImmortalWrt x86_64 配置。
+本目录是 [ku891/build-actions](https://github.com/ku891/build-actions) 中 **Immortalwrt / TR3000** 配置的本地镜像。
 
-## 当前默认插件（主固件 x86_64）
+## 刷机后无 WiFi 的常见原因
 
-- OpenClash、MosDNS、DDNS、SQM、KMS  
-- **不含 fileshare**（与最初可稳定云编译的配置一致；需要时可按下方自行加回）
+1. **`seed/cudy-tr3000-256m` 被写成 x86 配置**（云编译 trigger 曾误覆盖）→ 镜像缺无线栈。
+2. **seed 只有机型三行、没有 `wpad-openssl` 等** → 射频驱动/ hostapd 不完整。
+3. **`diy-part.sh` 里 `Kernel_partition_size=256`** → 仅适用于 x86，TR3000 必须填 **0**。
 
-## Cudy TR3000（256MB Flash）
+## 目录
 
-- seed 文件：`build/Immortalwrt/seed/cudy-tr3000-256m`  
-- 机型：`cudy_tr3000-256mb-v1`（**不是** 128MB 的 `cudy_tr3000-v1`）  
-- 在 `settings.ini` 中设置：`CONFIG_FILE="cudy-tr3000-256m"`
+| 文件 | 说明 |
+|------|------|
+| `build/Immortalwrt/settings.ini` | 云编译机型：`CONFIG_FILE="cudy-tr3000-256m"` |
+| `build/Immortalwrt/seed/cudy-tr3000-256m` | mediatek 机型 + WiFi 包 |
+| `build/Immortalwrt/diy-part.sh` | 旁路由、分区等 |
 
-## 可选：自行加回 fileshare Go 版
+## 修改后如何生效
 
-插件仓库：[ku891/fileshare-openwrt](https://github.com/ku891/fileshare-openwrt)（`go-v2.0` 为 Go 实现，不依赖 Node）
-
-1. 在 `diy-part.sh` 末尾、`CLEAR_PATH` 之前增加：
-
-```bash
-grep -q 'src-git fileshare' feeds.conf.default || \
-  echo 'src-git fileshare https://github.com/ku891/fileshare-openwrt.git;go-v2.0' >> feeds.conf.default
-```
-
-2. 在 `seed/x86_64` 增加：
-
-```
-CONFIG_PACKAGE_fileshare=y
-CONFIG_PACKAGE_luci-app-fileshare=y
-```
-
-## 单独云编译 fileshare IPK（不编整固件）
-
-在 [ku891/build-actions Actions](https://github.com/ku891/build-actions/actions) 中手动运行工作流：**「单独编译-fileshare-IPK」**。
-
-- 可选择 ImmortalWrt 分支、`fileshare-openwrt` 分支（默认 `go-v2.0`）  
-- **TARGET_PROFILE**：`x86_64`；TR3000 机型请用本目录 seed **`cudy-tr3000-256m`** 编全固件（上游 Actions 的 TR3000 选项仍指向 128MB 旧机型，256MB 版勿选）  
-- 完成后在 **Artifacts** 下载 `fileshare*.ipk`（及可选 `luci-app-fileshare*.ipk`）
+1. 将 `cloud-fix/build/Immortalwrt/` 下文件同步到 GitHub **`ku891/build-actions`** 同路径。
+2. 确认远程 **`seed/cudy-tr3000-256m` 第一行是 `CONFIG_TARGET_mediatek=y`**，不是 `CONFIG_TARGET_x86`。
+3. Actions → **Immortalwrt-天灵** → 等 **编译主程序** 成功。
+4. 下载 **`*cudy_tr3000-256mb-v1*sysupgrade.bin`** 刷机。
+5. 刷后 SSH 自检：`wifi status`、`opkg list-installed | grep wpad`。
 
 ## 相关仓库
 
-| 仓库 | 作用 |
-|------|------|
-| ku891/build-actions | 云编译流程与 seed |
-| ku891/common | 公共脚本 |
-| ku891/fileshare-openwrt | fileshare 插件（可选） |
-| ku891/bendi | 本地 `local.sh`（本仓库未改其核心脚本） |
-
+- 云编译：`ku891/build-actions`
+- 公共脚本：`ku891/common`
